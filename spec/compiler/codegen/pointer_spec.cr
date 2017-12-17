@@ -474,4 +474,14 @@ describe "Code gen: pointer" do
       ptr == ptr
       )).to_b.should be_true
   end
+
+  it "takes pointerof lib external var" do
+    codegen(%(
+      lib LibFoo
+        $extern : Int32
+      end
+
+      pointerof(LibFoo.extern)
+      ))
+  end
 end
